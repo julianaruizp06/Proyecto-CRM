@@ -62,7 +62,7 @@ const DashboardUsu = (props) => {
       </nav>
       <div className="bg-light" style={{ marginTop: 20, padding: 20 }}>
 
-       <Grafica></Grafica>
+       <Grafica/>
       </div>
     </div>
 

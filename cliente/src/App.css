@@ -15,9 +15,7 @@ body{font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucid
     justify-content: space-between;
     gap: 400px;
     border-radius: 8px;
-    
-   
-      
+         
 }
 
 
@@ -99,3 +97,15 @@ box-shadow: -1px 1px 32px 22px rgba(0,0,0,0.75);
     
 }
 
+#graficas{
+
+  margin-right: 50px;
+  width: 700px;
+  height: 400px;    
+  background: white;   
+    border-radius: 8px; 
+    box-shadow: -1px 1px 32px 22px rgba(0,0,0,0.75);
+        
+ 
+
+} 
