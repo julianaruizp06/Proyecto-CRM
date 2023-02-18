@@ -44,6 +44,8 @@ const Factura = () => {
     });
     if (res) {
       notify();
+      sendEmail (!sendEmail );
+      atras();
     }
     
   };

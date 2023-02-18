@@ -83,4 +83,6 @@
     color: white;
 }
 
-
+.btn-agregar{
+   display: flex;
+}
