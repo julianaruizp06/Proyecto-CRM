@@ -5,7 +5,7 @@ const pool = require('../../db');
 
 //ver listas de articulos
 const listarArticulos = async (req, res) => {
-const result = await pool.query("SELECT * FROM articulo")
+const result = await pool.query("SELECT * FROM articulo ORDER BY articulo.idarticulo DESC")
   res.send(result.rows);
 }
 

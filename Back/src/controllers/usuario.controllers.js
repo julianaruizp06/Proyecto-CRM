@@ -23,7 +23,8 @@ const listarUsuarios = async (req, res,verifyToken) => {
   const result = await pool.query(`
   SELECT usuario.*, rol.nombre as nombre_rol
   FROM usuario
-  JOIN rol ON usuario.idrol = rol.idrol`)
+  JOIN rol ON usuario.idrol = rol.idrol
+  ORDER BY usuario.idusuario DESC`)
   res.send(result.rows);
 };
 
@@ -31,7 +32,7 @@ const listarUsuario= async (req, res) => {
  
   const id = req.params.id 
   console.log(req.params.id)
-  const result = await pool.query(`SELECT * FROM usuario WHERE  idusuario = ${id}`)
+  const result = await pool.query(`SELECT * FROM usuario WHERE  idusuario = ${id} `)
   res.send(result.rows);
 };
 
@@ -46,7 +47,7 @@ const crearUsuario = async (req, res) => {
 
  const result= await pool.query
   (`INSERT INTO usuario (idrol, nombre, tipo_documento, num_documento, direccion, telefono, email, estado )
-  VALUES ( '${idrol}', '${nombre}', '${tipo_documento}', '${num_documento}',' ${direccion}', '${telefono}', '${email}', ${estadoRef})`)
+  VALUES ( ${idrol}, '${nombre}', '${tipo_documento}', '${num_documento}',' ${direccion}', '${telefono}', '${email}', ${estadoRef})`)
   
   console.log(result)
   res.send("Crear un Usuario");

@@ -5,7 +5,7 @@ const pool = require('../../db')
 //ver listas de clientes
 
 const listarClientes = async (req, res) => {
-  const result = await pool.query("SELECT * FROM cliente")
+  const result = await pool.query("SELECT * FROM cliente ORDER BY cliente.idcliente DESC")
     res.send(result.rows);
   }
 

@@ -1,0 +1,101 @@
+body{font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+
+}
+
+#login{
+    justify-content:right;
+
+}
+
+#agregU,
+#cotiza
+{
+    display: flex;
+    justify-content: space-between;
+    gap: 400px;
+    border-radius: 8px;
+    
+   
+      
+}
+
+
+
+#search
+{
+    margin: 8px;
+    width: 200px;
+    height:35px;   
+    border-radius: 8px; 
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.49);    
+
+}
+
+#btn_atras{
+    width: 80px;
+    height:35px; 
+    border-radius: 8px; 
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.49);    
+
+
+}
+
+#table{
+border-radius: 8px;
+box-shadow: -1px 1px 32px 22px rgba(0,0,0,0.75);
+
+}
+
+#btn_agregar-co{
+    width:400px;
+    height:35px;   
+    border-radius: 8px; 
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.49);    
+
+}
+#containerlo{
+    display: flex;
+    flex-direction: row;
+    
+  
+}
+
+.precio-u{
+    color:black;
+
+}
+
+.agregarbtn{
+    
+    width:70px;
+    height:35px;   
+    border-radius: 8px; 
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.49);  
+    
+}
+
+
+#btn_agregar{    
+    display: flex;
+    margin: 8px;
+   
+   
+    width:200px; 
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.49);     
+}
+
+.agregA{
+    margin-left:100px ;
+}
+
+
+.titulo,
+.navbar-nav
+{
+    margin-left: 100px;
+    padding: 10px;
+    font-size: 20px;
+    
+}
+
