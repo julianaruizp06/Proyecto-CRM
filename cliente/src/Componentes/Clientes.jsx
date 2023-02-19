@@ -148,18 +148,18 @@ const searchUser=({target})=>{
     <div className="container-sm">
       <header style={{ color: "white", marginTop: 40, marginBottom:40}}>
       <h2>Bienvenido:{props.user.name} </h2>
-        <h3>
-          <strong>Clientes</strong>{" "}
-        </h3>
+        <h5>
+          En este módulo puedes agregar, editar y eliminar los diferentes clientes del sistema.{" "}
+        </h5>
       </header>
-      <div id="agregarClientes">
+      <div className="agregarUsuario">
       
-        <Button id="btn_agregar" className="btn btn-success"  onClick={() => toggle()}>< AiOutlineUserAdd/>  Agregar cliente</Button>
+        <Button id="btn_agregar" className="btn btn-success"  onClick={() => toggle()}>< AiOutlineUserAdd/> Agregar cliente</Button>
       
        </div>
        <div id="agregU">
-       <input type="search" id="search" onChange={searchUser} placeholder="Buscar Cliente" />
-       <Button id="btn_atras" className="btn btn-light "  onClick={() => atras()}>< AiOutlineArrowLeft/></Button>
+       <input type="searchclien" id="searchC" onChange={searchUser} placeholder="Buscar Cliente" />
+       <Button id="btn_atras" className="btn btn-light "  onClick={() => atras()}>< AiOutlineArrowLeft/>Home</Button>
        </div>
 
       

@@ -29,16 +29,16 @@ const DashboardUsu = (props) => {
   return (
 
 
+    
     <div id="caja_menu" style={{ textAlign: "left" }}>
 
-      <div claseName="titulo " style={{ color: "white", marginTop: 80 }}>
+      <div className="titulo " style={{ color:"white", marginTop:80}}>
 
-        <strong className="h3" style={{ color: "white" }}>
-        Bienvenido Usuario:{props.user.name} 
+        <strong className="h3"  style={{ color:"white"}}>
+          Bienvenido Usuario: {props.user.name} 
         </strong>
 
-      </div>
-
+     </div>
 
 
 
@@ -60,9 +60,9 @@ const DashboardUsu = (props) => {
           </div>
         </div>
       </nav>
-      <div className="bg-light" style={{ marginTop: 20, padding: 20 }}>
+      <div >
 
-       <Grafica/>
+      <Grafica></Grafica>
       </div>
     </div>
 

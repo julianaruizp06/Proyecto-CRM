@@ -23,9 +23,7 @@ rol
     "num_documento": "20000000",
     "direccion": "Medellin manzana 11 calle falsa 123",
     "telefono": "3109876543",
-    "email": "juli@wilson.com",
-    "contrasenia": "def",
-    "estado": true 
+     "estado": true 
 }
 
 

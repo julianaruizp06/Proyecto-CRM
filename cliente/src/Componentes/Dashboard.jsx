@@ -42,7 +42,7 @@ const navigate=useNavigate();
            Bienvenido Administrador: {props.user.name} 
         </strong>
 
-        </div>    
+      </div>    
 
        
 

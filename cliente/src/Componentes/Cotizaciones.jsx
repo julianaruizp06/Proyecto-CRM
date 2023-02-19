@@ -10,7 +10,7 @@ import {
   Input,
 } from "reactstrap";
 import { FaEdit } from "react-icons/fa";
-import { AiFillDelete, AiOutlineUserAdd, AiOutlineArrowLeft,AiOutlineSearch } from "react-icons/ai";
+import { AiFillDelete, AiOutlineUserAdd ,AiOutlineArrowLeft,AiOutlineSearch} from "react-icons/ai";
 
 import notify from "../utils/notify";
 
@@ -239,26 +239,31 @@ const Cotizacion = (props) => {
   return (
     <div className="container-sm">
       <header style={{ color: "white", marginTop: 40, marginBottom: 40 }}>
-        <h3>
-          <strong>Cotización</strong>{" "}
-        </h3>
-       
+      <h2>Bienvenido:{props.user.name} </h2>
+      <h5>
+          En este módulo puedes agregar, editar y eliminar los diferentes cotizaciones del sistema.{" "}
+      </h5>        
       </header>
-      <div className="agregarArticulos">
-      <Button id="btn_agregar" className="btn btn-success"  onClick={() => toggle()}>< AiOutlineUserAdd/>  Agregar Cotización</Button>
-      </div>
+      
 
-      <div id="agregU">
+      <div className="agregarUsuario">
+
+      <Button
+          id="btn_agregar" className="btn btn-success"onClick={() => toggle()}> <AiOutlineUserAdd /> Agregar Cotización</Button>
+        </div>
+
+        <div id="agregU">
+
         <input
           type="search"
-          id="search"
+          id="searchC"
           onChange={searchUser}
           placeholder="Buscar Cotizacion"
         />
-        <Button id="btn_atras" className="btn btn-light "  onClick={() => atras()}>< AiOutlineArrowLeft/></Button>
 
-
-      </div>
+<Button id="btn_atras" className="btn btn-light "  onClick={() => atras()}>< AiOutlineArrowLeft/>Home</Button>
+        </div>
+     
 
       <table
         className="table"
@@ -284,11 +289,12 @@ const Cotizacion = (props) => {
               <th className="text-center">{item.cliente}</th>
               <th className="text-center">{item.vendedor}</th>
               <th>
-                <Button className="btn btn-primary"
+                <Button
+                  className="ver"
                   id="view"
                   onClick={() => hanldeView(item.id_cotizacion)}
                 >
-                  <AiOutlineSearch/>
+                 <AiOutlineSearch/>
                 </Button>
               </th>
               <th>

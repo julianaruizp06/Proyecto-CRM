@@ -25,7 +25,6 @@ const USER = {
   direccion: "",
   telefono: "",
   email: "",
-  contrasenia: "",
   estado: "",
 };
 
@@ -54,9 +53,14 @@ const Usuario = (props) => {
     const res = await axios.get(url);
     if (res) {
       setUsuario(res.data || []);
-      
+            
     }
+    
   };
+
+  useEffect(() => {
+    listarUsuario();   
+  }, []);
 
 
   
@@ -77,12 +81,13 @@ const Usuario = (props) => {
     } else {
       let res = await axios.post(url,selected);
       console.log(res);
+      listarUsuario(); 
       crearLogin();
-      setModal(!modal)
-      listarUsuario();
-      
-    }
+      setModal(!modal);
+     
+          }
   };
+  
 
   const crearLogin = async () => {
     const res = await axios.post(urlLogin,selected);
@@ -105,11 +110,12 @@ const actualizarUsuario = async () => {
   const res = await axios.put(url,selected);
   console.log(res)
   if(res){
+    listarUsuario(); 
     notify();
     setLogin();
     setSelected({});
     setModaledit(!modaledit);
-    listarUsuario(); 
+    
 
   }
 }
@@ -141,10 +147,7 @@ const searchUser=({target})=>{
   }
  
 
-  useEffect(() => {
-    listarUsuario();
-   
-  }, []);
+ 
 
  
   useEffect(() => {
@@ -152,7 +155,7 @@ const searchUser=({target})=>{
     //eliminar el input de de search
     /* document.getElementById (search)=none */
    
-  }, []);
+  }, [login]);
 
 
 
@@ -176,7 +179,7 @@ const searchUser=({target})=>{
     setSelected(user);    
     setModaledit(!modaledit);
   }
-console.log(modaledit)
+
 
   const toggleelogin = login => {//de la modal login
     setSelected(login);
@@ -189,6 +192,7 @@ console.log(modaledit)
       navigate("/homea")  
    
     }
+    
 
 
   return (
@@ -197,12 +201,12 @@ console.log(modaledit)
       <header className="header_u" style={{ color: "white", marginTop: 40, marginBottom:40}}>
      
       <div  className="titulousuario">
-      <h2>Bienvenido :{props.user.name} </h2>
+      <h2>Bienvenido: {props.user.name} </h2>
       
       </div>      
-        <h3>
-          <strong>Usuarios</strong>{" "}
-        </h3>        
+        <h5>
+          En este módulo puedes agregar, editar y eliminar los diferentes usuarios del sistema.{" "}
+        </h5>        
       </header>
 
       <div className="agregarUsuario">
@@ -210,8 +214,8 @@ console.log(modaledit)
       </div>
 
       <div id="agregU">      
-        <input type="search" id="search" onChange={searchUser} placeholder="Buscar Usuario" />        
-        <Button id="btn_atras" className="btn btn-light "  onClick={() => atras()}>< AiOutlineArrowLeft/></Button>
+        <input type="search" id="searchU" onChange={searchUser} placeholder=" ¿Qué usuario buscas?" />        
+        <Button id="btn_atras" className="btn btn-light "  onClick={() => atras()}>< AiOutlineArrowLeft/> Home</Button>
        </div>
       
        
@@ -274,32 +278,26 @@ console.log(modaledit)
                 autoComplete="off"
               >
                
-              <div className="col-md-4">
-                  
-                <div id="oplogin"className="">
+              <div className="col-md-4">                  
+                <div id="oplogin"className="idrol">
                   <label>
                     <strong> Rol</strong>
                   </label>
                   <select
-                    className=""
+                    className="idrol"
                     name="idrol"
                     id="idrol"
-                    onChange={handleInputChange}
-                    >
-                    
+                    onChange={handleInputChange}>           
                     <option selected disabled value="">
                       -- Seleccione --
                     </option>
                     <option value="1">Administrador</option>
-                    <option value="2">Usuario</option>
+                    <option value="2">Usuario</option>                    
                   </select>
-                  </div>
-
-                   
-                  
-                    
+                  </div>           
               </div>
-                <br />
+              <br/>
+              <div id="oplogin"className="nombre">
                 <label htmlFor="nombre">
                   <strong>Nombre</strong>
                 </label>
@@ -307,25 +305,25 @@ console.log(modaledit)
                   className="form-control"
                   type="text"
                   name="nombre"
-                  id="nombre"
-                  
-                  onChange={handleInputChange}
-                />
-                <br />
+                  id="nombre"                  
+                   onChange={handleInputChange}/>
+                </div>
+                <br/>
+
                 <div className="col-md-12">
-                  <label htmlFor="">
+                <div id="oplogin"className="tipo_documento">
+                  <label >
                     <strong> Tipo de identificación</strong>
                   </label>
                   <select
                     className="form-control"
                     name="tipo_documento"
                     id="tipo_documento"
-                    onChange={handleInputChange}
-                  >
+                    onChange={handleInputChange}>
                     <option selected disabled value="">
                       -- Seleccione --
                     </option>
-                    <option value="cedula_de_ciudadania">
+                    <option value="cedula _de_ciudadania">
                       Cédula de ciudadanía
                     </option>
                     <option value="Tarjeta_identidad">
@@ -334,18 +332,26 @@ console.log(modaledit)
                     <option value="Nit">NIT</option>
                   </select>
                 </div>
+                </div>
+                <br/>
+
                 <div className="col-md-12">
+                <div id="oplogin"className="numero_documento">
                   <label htmlFor="numero_documento">
-                    <strong>Numero de documento</strong>
+                    <strong>Número de documento</strong>
                   </label>
-                  <input
+                  <input 
                     className="form-control"
                     type="text"
                     name="num_documento"
                     id="num_documento"
-                    onChange={handleInputChange}
-                  />
+                    onChange={handleInputChange}/>
                 </div>
+                </div>
+                <br/>
+
+                <div className="col-md-12">
+                <div id="oplogin"className="direccion">
                 <label htmlFor="direccion">
                   <strong>Direccion</strong>
                 </label>
@@ -354,8 +360,13 @@ console.log(modaledit)
                   type="text"
                   name="direccion"
                   id="direccion"
-                  onChange={handleInputChange}
-                /><br />
+                   onChange={handleInputChange}/>
+                </div>
+                </div>
+
+                <br/>
+                <div className="col-md-12">
+                <div id="oplogin"className="telefono">
                 <label htmlFor="telefono">
                   <strong>Telefono</strong>
                 </label>
@@ -364,9 +375,14 @@ console.log(modaledit)
                   type="text"
                   name="telefono"
                   id="telefono"
-                  onChange={handleInputChange}
-                />
-                <br />
+                  onChange={handleInputChange}/>
+                  </div>
+                  </div>
+
+
+                <br/>
+                <div className="col-md-12">
+                <div id="oplogin"className="email">
                 <label htmlFor="email">
                   <strong>Email</strong>
                 </label>
@@ -375,9 +391,14 @@ console.log(modaledit)
                   type="email"
                   name="email"
                   id="email"
-                  onChange={handleInputChange}
-                />
+                   onChange={handleInputChange}/>
+                   </div>
+                   </div>
+                   <br/>
+
+
                    <div className="col-md-12">
+                   <div id="oplogin"className="estado">
                   <label htmlFor="estado">
                     <strong> Estado</strong>
                   </label>
@@ -394,6 +415,8 @@ console.log(modaledit)
                     <option value="2">Inactivo</option>
                   </select>
                 </div>
+                </div>
+                
 
               </Form>
             </div>
@@ -576,34 +599,9 @@ console.log(modaledit)
                   <label>
                     <strong> Rol</strong>
                   </label>
-                  <select
-                    className="form-control"
-                    name="idrol"
-                    id="idrol"                    
-                    onChange={handleInputChange}
-                    value={selected.idrol}
-                    
-                  >
-                    <option selected disabled value="">
-                      -- Seleccione --
-                    </option>
-                    <option value="1">Administrador</option>
-                    <option value="2">Usuario</option>
-                  </select>
-                </div>
-                <br />
-                <label htmlFor="idusuario">
-                  <strong>Usuario</strong>
-                </label>
-                <input
-                  className="form-control"
-                  type="text"
-                  name="idusuario"
-                  value={selected.idusuario}
-                  id="idusuario"
-                  onChange={handleInputChange}
-                />
-                <br />
+                  <th className="text-center">{selected.nombre_rol} </th>
+                 </div>
+
               
                 <div className="col-md-12">
                   <label htmlFor="usuario">
@@ -619,7 +617,7 @@ console.log(modaledit)
                   />
                 </div>
                 <label htmlFor="contrasenia">
-                  <strong>Email</strong>
+                  <strong>Contraseña</strong>
                 </label>
                 <input
                   className="form-control"

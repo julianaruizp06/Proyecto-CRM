@@ -25,7 +25,7 @@ const USER = {
  };
 
 
-const Articulo = () => { 
+const Articulo = (props) => { 
   const url = "http://localhost:3001/articulo";
 
 
@@ -144,19 +144,20 @@ const searchUser=({target})=>{
   return (
     <div className="container-sm">
       <header style={{ color: "white", marginTop: 40, marginBottom:40}}>
-        <h3>
-          <strong>Articulos</strong>{" "}
-        </h3>
+      <h2>Bienvenido:{props.user.name} </h2>
+        <h5>
+        En este módulo puedes agregar, editar y eliminar los diferentes articulos del sistema.{" "}
+        </h5>
         
       </header>
       
-      <div className="agregarArticulos">
+      <div className="agregarA">
       <Button id="btn_agregar" className="btn btn-success"  onClick={() => toggle()}>< AiOutlineUserAdd/>  Agregar articulo</Button>
       </div>
 
       <div id="agregU">      
-        <input type="search" id="search" onChange={searchUser} placeholder="Buscar Articulo" />
-        <Button id="btn_atras" className="btn btn-light "  onClick={() => atras()}>< AiOutlineArrowLeft/></Button>
+        <input type="search" id="searchA" onChange={searchUser} placeholder="¿Qué articulo buscas?" />
+        <Button id="btn_atras" className="btn btn-light "  onClick={() => atras()}>< AiOutlineArrowLeft/>Home</Button>
 
        
       
