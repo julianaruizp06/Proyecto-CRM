@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 //CONVERTIMOS EL ARCHIVO EN PDF PARA ENVIARLO COMO ARCHIVO ADJUNTO 
 const sendCotizacion = async (req, res) => {
     const { html } = req.body;
-
+    
     await transporter.sendMail({
         from: '"Fred Foo 👻" <cartera@juliana.com>',
         to: "notificacionERM@juliana.com",

@@ -43,8 +43,7 @@ const Factura = () => {
       html: facturaDigital.outerHTML,
     });
     if (res) {
-      notify();
-      sendEmail (!sendEmail );
+      notify();      
       atras();
     }
     
@@ -155,7 +154,7 @@ const Factura = () => {
               variant="outline-primary"      
                id="button_send"               
                 outline
-                onClick={() => sendEmail()}
+                onClick={() =>sendEmail()}
             >
                 Enviar Correo
             </Button>
