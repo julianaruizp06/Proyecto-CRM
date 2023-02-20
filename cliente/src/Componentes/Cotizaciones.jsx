@@ -148,12 +148,14 @@ const Cotizacion = (props) => {
     } else {
       const precios = listAr.map((x) => x.precioT); //calcular la su total de los articulos
       const valor = precios.reduce((cont, next) => cont + next);
+      /* const valorT =valor*descuento; */
       const payload = {
         idusuario: props.user.id,
         idcliente: Number(idCliente),
         valor: valor,
         articulos: listAr,
         decuento: descuento
+        /* valorT: valorT */
       };
       let res = await axios.post(url, payload);
       notify()
@@ -322,24 +324,40 @@ const Cotizacion = (props) => {
         <Modal isOpen={modal} toggle={toggle}>
           <ModalHeader toggle={toggle}>Crear Cotizacion</ModalHeader>
           <div className="btn-agregar">
-            <Input
-              type="select"
-              name="select"
-              id="search"
-              onChange={(e) => setIdCliente(e.target.value)}
+            <label>Busca tu cliente:</label>
+            <Input type="select"name="select" id="agregar" onChange={(e) => setIdCliente(e.target.value)}
             >
               {cliente.map((item) => (
                 <option key={item.idcliente} value={item.idcliente}>
                   {item.nombre}
                 </option>
               ))}
-            </Input>
-
-            <label className="agregA">Agregar Articulo</label>
-            <Button className="agregarbtn" onClick={() => agreArt()}>
-              +
-            </Button>
+            </Input>            
           </div>
+          
+          
+            <Button className="agregarArM" onClick={() => agreArt()}>+ Agregar Articulo</Button>
+
+         {/*    <div className="col-md-4">                  
+                <div id="oplogin"className="descuento">
+                  <label>
+                    <strong> Descuento </strong>
+                  </label>
+                  <select
+                    className="descuento"
+                    name="descuento"
+                    id="descuento"
+                    onChange={handleInputChange}>           
+                    <option selected disabled value="">
+                      -- Seleccione --
+                    </option>
+                    <option value="0,2">20 %</option>
+                    <option value="0,3">30 %</option> 
+                    <option value="0,5">50 5</option>                   
+                  </select>
+                  </div>           
+              </div> */}
+          
           <ModalBody>
             <div className="form-group">
               <Form>

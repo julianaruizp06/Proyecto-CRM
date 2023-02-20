@@ -76,22 +76,27 @@ const Usuario = (props) => {
   //verifico que los campos del formulario esten todos llenos
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (!e.target.checkValidity()) {
       console.log("no enviar");
     } else {
-      let res = await axios.post(url,selected);
+      
+       let res = await axios.post(url,selected);
       console.log(res);
-      listarUsuario(); 
-      crearLogin();
-      setModal(!modal);
-     
+      listarUsuario();   
+      setModal(!modal);      
           }
+
+
+
+
+
   };
   
 
   const crearLogin = async () => {
     const res = await axios.post(urlLogin,selected);
-    console.log(res)
+    
     
     if(res){
       notify();
@@ -107,6 +112,7 @@ const Usuario = (props) => {
 //ACTUALIZAR  USUARIO
 
 const actualizarUsuario = async () => {
+  
   const res = await axios.put(url,selected);
   console.log(res)
   if(res){
@@ -323,7 +329,7 @@ const searchUser=({target})=>{
                     <option selected disabled value="">
                       -- Seleccione --
                     </option>
-                    <option value="cedula _de_ciudadania">
+                    <option value="cedula_de_ciudadania">
                       Cédula de ciudadanía
                     </option>
                     <option value="Tarjeta_identidad">

@@ -59,7 +59,7 @@ const actualizarCliente = async(req, res, next) => {
      idcliente,nombre,direccion,telefono,email,estado
     }=req.body;
 
-    console.log(idcliente,nombre,direccion,telefono,email,estado)
+    
   
        
  

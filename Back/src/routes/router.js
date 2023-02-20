@@ -20,7 +20,6 @@ function routerApi(app) {
     router.use('/rol', routerRol)
     router.use('/usuario', routerUsuario)
     router.use('/login', routerLogin)
-    router.use('/login', routerLogin)
     router.use('/notificaciones', routerNotificaciones)
 }
 

@@ -4,21 +4,9 @@ const pool = require('../../db')
 
 
 
-const verifyToken = (req, res, next) => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
-  console.log(authHeader);
-  if(token==null)
-      return res.status(401).send("Token requerido");
-  jwt.verify(token, "x4TvnErxRETbVcqaLl5dqMI115eNlp5y", (err, user)=>{
-      if(err) return res.status(403).send("Token invalido");
-      console.log(user);
-      req.user = user;
-      next();
-  });
-}
 
-const listarUsuarios = async (req, res,verifyToken) => {
+
+const listarUsuarios = async (req, res) => {
     
   const result = await pool.query(`
   SELECT usuario.*, rol.nombre as nombre_rol
@@ -30,13 +18,16 @@ const listarUsuarios = async (req, res,verifyToken) => {
 const listarUsuario= async (req, res) => {
  
   const id = req.params.id 
-  console.log(req.params.id)
+ 
   const result = await pool.query(`SELECT * FROM usuario WHERE  idusuario = ${id}`)
   res.send(result.rows);
 };
 
+
+//crear usuario
 const crearUsuario = async (req, res) => {
-  const{ idrol, nombre, tipo_documento, num_documento, direccion, telefono, email, estado }=req.body;
+  try {
+    const{ idrol, nombre, tipo_documento, num_documento, direccion, telefono, email, estado }=req.body;
   let estadoRef=estado
   if (estadoRef==="1"){
     estadoRef=true
@@ -44,14 +35,24 @@ const crearUsuario = async (req, res) => {
     estadoRef=false
   }
 
- const result= await pool.query
+  await pool.query
   (`INSERT INTO usuario (idrol, nombre, tipo_documento, num_documento, direccion, telefono, email, estado )
-  VALUES ( '${idrol}', '${nombre}', '${tipo_documento}', '${num_documento}',' ${direccion}', '${telefono}', '${email}', ${estadoRef})`)
-  
-  console.log(result)
+  VALUES ( ${Number(idrol)}, '${nombre}', '${tipo_documento}', '${num_documento}',' ${direccion}', '${telefono}', '${email}', ${estadoRef})`)
+
+   
   res.send("Crear un Usuario");
+    
+  } catch (error) {
+    console.error(error)    
+  }
+  
+   
 };
 
+
+
+
+//eliminar usuario
 const eliminarUsuario = async(req, res) => {
   const {id} = req.params
 
@@ -66,7 +67,7 @@ const eliminarUsuario = async(req, res) => {
 
 
 
-
+//Actualizar usurio
 
 const actualizarUsuario = async(req, res, next) => {
 
@@ -78,8 +79,7 @@ const actualizarUsuario = async(req, res, next) => {
         direccion,telefono,email,estado
       } = req.body;
 
-      console.log( idrol,idusuario,nombre,
-        direccion,telefono,email,estado,)
+    
 
   
     const result =await pool.query(
@@ -91,7 +91,7 @@ const actualizarUsuario = async(req, res, next) => {
    email= '${email}',  
    estado= ${estado}
    WHERE idusuario= ${idusuario}` )
-   console.log(result)
+   
   
      if (result.rows.length !== 0) {
       return res.status(404).json({ 
