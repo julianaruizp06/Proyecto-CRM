@@ -41,6 +41,11 @@ body{font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucid
 
 }
 
+#home{
+
+    margin-left: 10px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.49); 
+}
 #searchco{
     margin: 8px;
     width: 165px;
@@ -57,7 +62,7 @@ body{font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucid
 #searchco
 {
     margin: 8px;
-    width: 180px;
+    width: 190px;
     height:30px;   
     border-radius: 8px; 
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.49);    

@@ -9,7 +9,7 @@ import {
   Form,
 } from "reactstrap";
 import { FaEdit } from "react-icons/fa";
-import { AiFillDelete , AiOutlineUserAdd,AiOutlineArrowLeft} from "react-icons/ai";
+import { AiFillDelete , AiOutlineUserAdd} from "react-icons/ai";
 
 import notify from "../utils/notify";
 import { useNavigate } from "react-router-dom"
@@ -153,16 +153,17 @@ const searchUser=({target})=>{
         </h5>
       </header>
       <div className="agregarUsuario">
-      
-        <Button id="btn_agregar" className="btn btn-success"  onClick={() => toggle()}>< AiOutlineUserAdd/> Agregar cliente</Button>
+      <Button id="home" className="btn btn-light "  onClick={() => atras()}>Inicio</Button>
+
       
        </div>
        <div id="agregU">
-       <input type="searchclien" id="searchC" onChange={searchUser} placeholder="Buscar Cliente" />
-       <Button id="btn_atras" className="btn btn-light "  onClick={() => atras()}>< AiOutlineArrowLeft/>Home</Button>
+       <input type="searchclien" id="searchC" onChange={searchUser} placeholder="Qué cliente buscas?" />
+       <Button id="btn_agregar" className="btn btn-success"  onClick={() => toggle()}>< AiOutlineUserAdd/> Agregar cliente</Button>
+
        </div>
 
-      
+    
 
       <table
         className="table" id="table"
@@ -183,21 +184,21 @@ const searchUser=({target})=>{
         <tbody>
           {clienfil.map((item, key) => (
             <tr key={key}>
-              <th key={key} className="text-center">{key+1} </th>
-              <th className="text-center">{item.nombre}</th>
-              <th className="text-center">{item.telefono}</th>
-              <th className="text-center">{item.direccion}</th>
-              <th className="text-center">{item.email}</th>
-              <th>
+              <td key={key} className="text-center">{key+1} </td>
+              <td className="text-center">{item.nombre}</td>
+              <td className="text-center">{item.telefono}</td>
+              <td className="text-center">{item.direccion}</td>
+              <td className="text-center">{item.email}</td>
+              <td>
                 <Button className="btn btn-warning" id="editar" onClick={() => toggleedit(item)}>
                   <FaEdit />
                 </Button>
-              </th>
-              <th>
+              </td>
+              <td>
               <Button className="btn btn-danger" id="eliminar" onClick={() => eliminarCliente(item.cliente)}>
               <AiFillDelete />
                 </Button>
-              </th>
+              </td>
             </tr>
           ))}
         </tbody>

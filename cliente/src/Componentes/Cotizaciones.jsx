@@ -10,7 +10,7 @@ import {
   Input,
 } from "reactstrap";
 import { FaEdit } from "react-icons/fa";
-import { AiFillDelete, AiOutlineUserAdd ,AiOutlineArrowLeft,AiOutlineSearch} from "react-icons/ai";
+import { AiFillDelete, AiOutlineUserAdd ,AiOutlineSearch} from "react-icons/ai";
 
 import notify from "../utils/notify";
 
@@ -251,23 +251,20 @@ const Cotizacion = (props) => {
       </header>
       
 
-      <div className="agregarUsuario">
+      <div className="agregarA">
+      <Button id="home" className="btn btn-light "  onClick={() => atras()}>Inicio</Button>
+      </div>
 
-      <Button
-          id="btn_agregar" className="btn btn-success"onClick={() => toggle()}> <AiOutlineUserAdd /> Agregar Cotización</Button>
-        </div>
-
+   
         <div id="agregU">
 
         <input
-          type="search"
-          id="searchC"
-          onChange={searchUser}
-          placeholder="Buscar Cotizacion"
-        />
-
-<Button id="btn_atras" className="btn btn-light "  onClick={() => atras()}>< AiOutlineArrowLeft/>Home</Button>
+          type="search" id="searchA" onChange={searchUser} placeholder=" Qué cotización buscas?"/>
+       <Button id="btn_agregar" className="btn btn-success"onClick={() => toggle()}> <AiOutlineUserAdd /> Agregar Cotización</Button>
         </div>
+
+
+      
      
 
       <table
@@ -288,12 +285,12 @@ const Cotizacion = (props) => {
         <tbody>
           {detalles_cotizacionfil.map((item, key) => (
             <tr key={key}>
-              <th key={key} className="text-center">
+              <td key={key} className="text-center">
                 {key + 1}{" "}
-              </th>
-              <th className="text-center">{item.cliente}</th>
-              <th className="text-center">{item.vendedor}</th>
-              <th>
+              </td>
+              <td className="text-center">{item.cliente}</td>
+              <td className="text-center">{item.vendedor}</td>
+              <td>
                 <Button
                   className="ver"
                   id="view"
@@ -301,8 +298,8 @@ const Cotizacion = (props) => {
                 >
                  <AiOutlineSearch/>
                 </Button>
-              </th>
-              <th>
+              </td>
+              <td>
                 <Button
                   className="btn btn-warning"
                   id="editar"
@@ -313,12 +310,12 @@ const Cotizacion = (props) => {
                 >
                   <FaEdit />
                 </Button>
-              </th>
-              <th>
+              </td>
+              <td>
                 <Button className="btn btn-danger" onClick={() => dropCotizacion(item.id_cotizacion)}>
                   <AiFillDelete />
                 </Button>
-              </th>
+              </td>
             </tr>
           ))}
         </tbody>
