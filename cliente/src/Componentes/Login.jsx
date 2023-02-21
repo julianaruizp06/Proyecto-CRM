@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { setLocalStorage, types } from "../utils/localStorage";
+import alert from "../utils/alert";
+import datosinco from "../utils/datosinco";
 
 function Login(props) {
   const navigate = useNavigate();
@@ -20,6 +22,7 @@ function Login(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!e.target.checkValidity()) {
+      alert();
       console.log("no enviar");
     } else {
       let res = await axios.post("http://localhost:3001/login", datos);
@@ -40,7 +43,8 @@ function Login(props) {
           navigate("/homeu");
         }
       } else {
-        console.log("Datos incorrectos");
+        
+       res.message("Datos incorrectos");
       }
     }
   };

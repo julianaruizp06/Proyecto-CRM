@@ -3,7 +3,8 @@ const { json } = require('express');
 const { Pool } = require('pg');
 const pool = require('../../db')
 const jwt = require("jsonwebtoken");
-const config = require('../../confi')
+const config = require('../../confi');
+
 
 
 
@@ -54,12 +55,15 @@ const validarLogin = async (req, res) => {
       
         }
     }else{
-      
-      res.send(res.json({respuesta:false}))
+     
+      console.log("datos incorrectos")
+      res.send(res.json({respuesta:false}));
       }
   }
   
  } catch (error) {
+  res.send.me
+
   console.error(error)
   
  }}

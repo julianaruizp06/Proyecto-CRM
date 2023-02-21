@@ -120,10 +120,12 @@ const Cotizacion = (props) => {
     listarCliente();
   }
 
+  //ver una factura
   const hanldeView = (id) => {
-    navigate(`/factura/${id}`);
+    navigate(`/factura/${id}`);  
+      
   }
-
+  
 
   //funciones para agregar los articulos en la ventana modal
   //agrgar una fila
@@ -165,6 +167,7 @@ const Cotizacion = (props) => {
     }
   };
 
+  //eliminar cotizacion
 
   const dropCotizacion = async (id) => {
     const res = await axios.delete(`${url}/${id}`)

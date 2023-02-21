@@ -11,7 +11,8 @@ const listarUsuarios = async (req, res) => {
   const result = await pool.query(`
   SELECT usuario.*, rol.nombre as nombre_rol
   FROM usuario
-  JOIN rol ON usuario.idrol = rol.idrol`)
+  JOIN rol ON usuario.idrol = rol.idrol
+  ORDER BY usuario.idusuario DESC`)
   res.send(result.rows);
 };
 
